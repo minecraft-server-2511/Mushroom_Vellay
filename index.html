@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mushroom Valley | Minecraft Community Edition</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.cdnfonts.com/css/minecraftia" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --mc-green: #5aa35a;
+            --mc-dirt: #3b2716;
+            --mc-stone: #7a7a7a;
+            --mc-bg: #1e1e1e;
+            --primary: #ffcc00; /* Experience Bar Gold */
+            --primary-hover: #ffffff;
+            --bg-page: #313233; /* Dark Stone */
+            --bg-card: #4a4b4d; /* Light Stone */
+            --text-main: #f0f0f0;
+            --text-muted: #bfbfbf;
+            --border-color: #000000;
+            --accent-badge: #2c2d2e;
+            --gold-premium: #ffaa00;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            background: url('https://www.transparenttextures.com/patterns/dark-matter.png'), #1a1a1a;
+            color: var(--text-main); 
+            line-height: 1.6; 
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .logo, .btn-primary, code {
+            font-family: 'Minecraftia', sans-serif;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 0px #000;
+        }
+
+        /* ===== NAVIGATION ===== */
+        header {
+            background: #212121;
+            border-bottom: 4px solid #000;
+            padding: 1rem 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo { display: flex; align-items: center; gap: 12px; font-size: 1.1rem; color: #fff; }
+        .logo img { width: 32px; height: 32px; image-rendering: pixelated; }
+        nav a { margin-left: 24px; text-decoration: none; color: #aaa; font-size: 0.8rem; transition: 0.2s;font-family: 'Minecraftia', sans-serif; }
+        nav a:hover { color: var(--primary); border-bottom: 2px solid var(--primary); }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            padding:80px 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6));
+            background-image: url(bg23.jpg);
+            background-size: cover;
+            background-position: center;
+            border-bottom: 8px solid var(--mc-green); 
+            min-height: 90vh;
+        }
+        .hero h1 { font-size: 2.8rem; margin-bottom: 20px; color: #fff; }
+        .hero p { font-size: 1rem; margin-bottom: 30px; max-width: 500px; color: #ddd; }
+        
+
+        .server-box {
+            background: #4a4b4d;
+            border: 4px solid #000;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            box-shadow: inset -4px -4px 0px #222, inset 4px 4px 0px #888;
+        }
+
+        .btn-primary {
+            background: #5aa35a;
+            color: white;
+            padding: 12px 28px;
+            border: 4px solid #000;
+            box-shadow: inset -4px -4px 0px #2d522d, inset 4px 4px 0px #8ed48e;
+            cursor: pointer;
+            transition: 0.1s;
+        }
+        .btn-primary:hover { background: #6bc26b; transform: scale(1.02); }
+        code { background: #000; padding: 10px; font-size: 1rem; color: #3ff13f; border: 2px solid #555; }
+
+        /* ===== FEATURES SECTION ===== */
+        section { padding: 80px 8%; }
+        .section-title { margin-bottom: 50px; font-size: 1.8rem; text-align: center; color: var(--primary); }
+        .grid-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; }
+        
+        .card {
+            background: #4a4b4d;
+            border: 4px solid #000;
+            padding: 25px;
+            box-shadow: inset -4px -4px 0px #222, inset 4px 4px 0px #888;
+            height: 100%;
+            transition: 0.2s;
+        }
+        .card:hover { transform: translateY(-5px); background: #5a5b5d; }
+        .card h3 { margin-bottom: 15px; font-size: 0.9rem; color: var(--primary); }
+
+        /* ===== COMMUNITY ===== */
+        .community-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .list-item { background: #333; border: 4px solid #000; padding: 30px; box-shadow: inset -4px -4px 0px #111, inset 4px 4px 0px #555; }
+        .list-item li {
+            padding: 12px;
+            background: #1a1a1a;
+            margin-bottom: 8px;
+            border: 2px solid #444;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Minecraftia', sans-serif;
+            font-size: 0.7rem;
+        }
+        .member-li::before { content: '👤'; font-size: 0.8rem; }
+        /* Example using the Crown icon */
+.patron-li::before { 
+    content: '👑'; 
+    margin-right: 8px; /* Adds a little space after the icon */
+    filter: drop-shadow(0 0 5px #ffaa00); /* Optional: adds a golden glow */
+}
+
+        /* ===== FOOTER ===== */
+        /* footer { 
+            background: #1a1a1a; 
+            border-top: 8px solid var(--mc-dirt); 
+            padding: 60px 8%; 
+        }
+        .contact-form input, .contact-form textarea {
+            border: 4px solid #000;
+            background: #333;
+            padding: 12px;
+            color: white;
+            box-shadow: inset 4px 4px 0px #111;
+        }
+
+        @media (max-width: 968px) {
+            .hero { flex-direction: column; text-align: center; }
+            .community-grid { grid-template-columns: 1fr; }
+        } */
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="icon1.png" alt="Mushroom Valley">
+        Mushroom Valley
+    </div>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#features">Features</a>
+        <a href="#community">Community</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-content-left">
+        <!-- <img src="png1.png" alt="Minecraft Adventure" class="hero-img"> -->
+    </div>
+    <div class="hero-content-right">
+        <h1>Discover Mushroom Valley</h1>
+        <p>Step into the friendliest Minecraft universe. High-performance builds and a warm community built on the spirit of adventure.</p>
+        <div class="server-box">
+            <span style="color: var(--primary); font-size: 0.7rem;">[ STATUS: ONLINE ]</span>
+            <code id="serverLink">hour-underling.gl.joinmc.link</code>
+            <button class="btn-primary" onclick="copyServer()">Copy Server IP</button>
+        </div>
+    </div>
+</section>
+
+<section id="about" style="background: url('https://www.transparenttextures.com/patterns/dark-matter.png'), #2c2d2e; border-top: 4px solid #000; border-bottom: 4px solid #000;">
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 50px; flex-wrap: wrap; max-width: 1200px; margin: 0 auto;">
+        <div style="flex: 1.2; min-width: 320px; background: rgba(0, 0, 0, 0.3); padding: 40px; border: 4px solid #000; box-shadow: inset -4px -4px 0px #111, inset 4px 4px 0px #444;">
+            <h2 class="section-title" style="text-align: left; margin-bottom: 25px; font-size: 1.8rem; text-shadow: 3px 3px 0px #000;">
+                A Cozy Survival Experience
+            </h2>
+            <p style="font-size: 1.15rem; color: #ffffff; line-height: 1.8; text-shadow: 1px 1px 2px #000;">
+                Mushroom Valley is a curated Minecraft community server where players connect to build, explore, and enjoy creative experiences together.
+            </p>
+            <div style="margin-top: 20px; border-left: 4px solid var(--mc-green); padding-left: 15px; font-style: italic; color: var(--text-muted); font-size: 0.95rem;">
+                Built for players who value community and high-performance gameplay.
+            </div>
+        </div>
+        <div style="flex: 0.8; min-width: 300px; display: flex; justify-content: center;">
+            <div style="padding: 10px;  margin-left: 25%;">
+                <img src="pngwing.com (40).png" alt="Mushroom Valley Experience" style="width: 100%; max-width: 400px; display: block;">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="features" style="padding: 80px 8%; position: relative; background-color: #1a1a1a; overflow: hidden;">
+    
+    <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 70%; pointer-events: none; z-index: 1;
+                background-image: 
+                    radial-gradient(circle, #ffcc00 1.2px, transparent 1.2px), 
+                    radial-gradient(circle, #ffaa00 1.8px, transparent 1.8px),
+                    radial-gradient(circle, rgba(255, 204, 0, 0.4) 4px, transparent 4px);
+                background-size: 80px 80px, 150px 150px, 250px 250px;
+                background-position: 0 0, 40px 40px, 120px 120px;
+                opacity: 0.5;
+                filter: blur(0.3px) drop-shadow(0 0 12px rgba(255, 204, 0, 0.7));
+                mask-image: linear-gradient(to top, black 20%, transparent 100%);
+                -webkit-mask-image: linear-gradient(to top, black 20%, transparent 100%);">
+    </div>
+
+    <h2 class="section-title" style="margin-bottom: 50px; font-size: 1.8rem; text-align: center; color: #ffcc00; font-family: 'Minecraftia', sans-serif; text-transform: uppercase; text-shadow: 2px 2px 0px #000; position: relative; z-index: 2;">
+        Features & Content
+    </h2>
+
+    <div class="grid-features" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; position: relative; z-index: 2;">
+        
+        <a href="resource-packs.html" style="text-decoration:none; color:inherit;">
+            <div class="card" 
+                 onmouseover="this.style.background='rgba(255, 255, 255, 0.12)'; this.style.transform='translateY(-8px)';" 
+                 onmouseout="this.style.background='rgba(74, 75, 77, 0.85)'; this.style.transform='translateY(0)';"
+                 style="background: rgba(74, 75, 77, 0.85); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 4px solid #000; padding: 25px; box-shadow: inset -4px -4px 0px #222, inset 4px 4px 0px #888; height: 100%; transition: all 0.3s ease;">
+                <h3 style="margin-bottom: 15px; font-size: 0.9rem; color: #ffcc00; font-family: 'Minecraftia', sans-serif;">Resource Packs</h3>
+                <p style="color: #f0f0f0; font-size: 0.95rem; line-height: 1.6;">Custom textures optimized for high-fidelity performance and aesthetic charm.</p>
+            </div>
+        </a>
+
+        <a href="mods.html" style="text-decoration:none; color:inherit;">
+            <div class="card" 
+                 onmouseover="this.style.background='rgba(255, 255, 255, 0.12)'; this.style.transform='translateY(-8px)';" 
+                 onmouseout="this.style.background='rgba(74, 75, 77, 0.85)'; this.style.transform='translateY(0)';"
+                 style="background: rgba(74, 75, 77, 0.85); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 4px solid #000; padding: 25px; box-shadow: inset -4px -4px 0px #222, inset 4px 4px 0px #888; height: 100%; transition: all 0.3s ease;">
+                <h3 style="margin-bottom: 15px; font-size: 0.9rem; color: #ffcc00; font-family: 'Minecraftia', sans-serif;">Curated Mods</h3>
+                <p style="color: #f0f0f0; font-size: 0.95rem; line-height: 1.6;">Carefully selected enhancements that expand gameplay while keeping the vanilla spirit.</p>
+            </div>
+        </a>
+
+        <a href="shaders.html" style="text-decoration:none; color:inherit;">
+            <div class="card" 
+                 onmouseover="this.style.background='rgba(255, 255, 255, 0.12)'; this.style.transform='translateY(-8px)';" 
+                 onmouseout="this.style.background='rgba(74, 75, 77, 0.85)'; this.style.transform='translateY(0)';"
+                 style="background: rgba(74, 75, 77, 0.85); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 4px solid #000; padding: 25px; box-shadow: inset -4px -4px 0px #222, inset 4px 4px 0px #888; height: 100%; transition: all 0.3s ease;">
+                <h3 style="margin-bottom: 15px; font-size: 0.9rem; color: #ffcc00; font-family: 'Minecraftia', sans-serif;">Visual Shaders</h3>
+                <p style="color: #f0f0f0; font-size: 0.95rem; line-height: 1.6;">Pre-configured support for stunning lighting, shadows, and atmospheric effects.</p>
+            </div>
+        </a>
+
+        <a href="discord.html" style="text-decoration:none; color:inherit;">
+            <div class="card" 
+                 onmouseover="this.style.background='rgba(255, 255, 255, 0.12)'; this.style.transform='translateY(-8px)';" 
+                 onmouseout="this.style.background='rgba(74, 75, 77, 0.85)'; this.style.transform='translateY(0)';"
+                 style="background: rgba(74, 75, 77, 0.85); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 4px solid #000; padding: 25px; box-shadow: inset -4px -4px 0px #222, inset 4px 4px 0px #888; height: 100%; transition: all 0.3s ease;">
+                <h3 style="margin-bottom: 15px; font-size: 0.9rem; color: #ffcc00; font-family: 'Minecraftia', sans-serif;">Discord</h3>
+                <p style="color: #f0f0f0; font-size: 0.95rem; line-height: 1.6;">Bridge the gap between the game and the community with our 24/7 integration.</p>
+            </div>
+        </a>
+
+    </div>
+</section>
+<section id="community" style="background: rgba(0,0,0,0.2);">
+    <h2 class="section-title">Our Community</h2>
+    <div class="community-grid">
+        <div class="list-item" style="border-color: var(--gold-premium);">
+            <h3 style="color: var(--gold-premium);">Our Patrons</h3>
+            <ul>
+                <li class="patron-li">Sourav.Notebook</li>
+                <li class="patron-li">MissBlossom</li>
+                <li class="patron-li">Abhinash Gaming</li>
+            </ul>
+        </div>
+        <div class="list-item">
+            <h3>Active Members</h3>
+            <ul>
+                <li class="member-li">Toxic_Insaan</li>
+                <li class="member-li">Chiraag_PlazZ</li>
+                <li class="member-li">CRAGON_LIVE</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<footer id="contact" style="background: #1a1a1a; border-top: 8px solid #5d4037; padding: 60px 8%;">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 30px; max-width: 1200px; margin: 0 auto;">
+        
+        <div style="flex: 1; min-width: 250px;">
+            <h2 style="font-size: 1.4rem; color: #FFFFFF; margin-bottom: 8px;">Ask Us Anything</h2>
+            <p style="color: #A09393; font-size: 0.9rem; margin-bottom: 20px;">Need help with technical support or faction inquiries?</p>
+            
+            <img src="pngwing.com (5).png" alt="Support Icon" 
+                 style="width: 100px; height: auto; display: block; opacity: 0.9;margin-left: 20%;">
+        </div>
+
+        <div style="flex: 1.5; min-width: 300px;">
+            <form class="contact-form" onsubmit="sendMail(event)" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                <input type="text" id="name" placeholder="Full Name" required 
+                       style="border: 4px solid #000; background: #333; padding: 12px; color: white; box-shadow: inset 4px 4px 0px #111;">
+                <input type="email" id="email" placeholder="Email Address" required 
+                       style="border: 4px solid #000; background: #333; padding: 12px; color: white; box-shadow: inset 4px 4px 0px #111;">
+                <textarea id="message" placeholder="How can we help?" rows="3" 
+                          style="grid-column: span 2; border: 4px solid #000; background: #333; padding: 12px; color: white; box-shadow: inset 4px 4px 0px #111;"></textarea>
+                
+                <button type="submit" class="btn-primary" 
+                        style="grid-column: span 2; padding: 12px; background-color: #2ecc71; color: white; border: none; cursor: pointer; font-weight: bold; text-transform: uppercase;">
+                    Send Message
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.7rem; color: #777; display: flex; justify-content: space-between;">
+        <span>© 2026 Mushroom Valley | Minecraft Server Edition</span>
+        <div style="display: flex; gap: 20px;">
+            <a href="#" style="color: inherit; text-decoration: none;">Privacy Policy</a>
+            <a href="#" style="color: inherit; text-decoration: none;">Terms of Service</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+function copyServer(){
+    const text = document.getElementById('serverLink').innerText;
+    navigator.clipboard.writeText(text);
+    alert("Server IP copied! See you in the valley.");
+}
+function sendMail(e) {
+    e.preventDefault();
+    const email = "deepansakshi2023@gmail.com";
+    const subject = "Inquiry: " + document.getElementById('name').value;
+    const body = document.getElementById('message').value;
+    window.location = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+</script>
+
+</body>
+</html>

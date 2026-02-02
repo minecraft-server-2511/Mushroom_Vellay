@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Resource Packs | Mushroom Valley</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.cdnfonts.com/css/minecraftia" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --mc-green: #5aa35a;
+            --mc-dirt: #3b2716;
+            --primary: #ffcc00;
+            --bg-page: #313233;
+            --bg-card: #4a4b4d;
+            --text-main: #f0f0f0;
+            --text-muted: #bfbfbf;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            background: url('https://www.transparenttextures.com/patterns/dark-matter.png'), #1a1a1a;
+            color: var(--text-main); 
+            line-height: 1.6; 
+            font-family: 'Inter', sans-serif;
+        }
+
+        h1, h2, h3, .logo, .btn-download {
+            font-family: 'Minecraftia', sans-serif;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 0px #000;
+        }
+
+        /* ===== NAVIGATION ===== */
+        header {
+            background: #212121;
+            border-bottom: 4px solid #000;
+            padding: 1rem 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0; z-index: 1000;
+        }
+        .logo { display: flex; align-items: center; gap: 12px; font-size: 1.1rem; color: #fff; text-decoration: none; }
+        .back-link { text-decoration: none; color: #aaa; font-size: 0.8rem; font-family: 'Minecraftia'; }
+        .back-link:hover { color: var(--primary); }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            padding: 60px 8%;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
+            background-image: url(bg1.jpg);
+            background-size: cover;
+            border-bottom: 8px solid var(--mc-green);
+            text-align: center;
+        }
+
+        .icon-box {
+            width: 80px;
+            height: 80px;
+            background: #4a4b4d;
+            border: 4px solid #000;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: inset -4px -4px 0px #222, inset 4px 4px 0px #888;
+        }
+        .icon-box img { width: 50px; height: 50px; image-rendering: pixelated;  }
+
+        .hero h1 { font-size: 2.5rem; color: #fff; margin-bottom: 10px; }
+        .hero p { max-width: 600px; margin: 0 auto; color: var(--text-muted); }
+
+        /* ===== PACKS GRID ===== */
+        .container { padding: 60px 8%; max-width: 1200px; margin: 0 auto; }
+        
+        .packs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .pack-card {
+            background: rgba(0,0,0,0.3);
+            border: 4px solid #000;
+            padding: 30px;
+            box-shadow: inset -4px -4px 0px #111, inset 4px 4px 0px #444;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: 0.2s;
+        }
+
+        .pack-card:hover {
+            transform: translateY(-5px);
+            background: rgba(0,0,0,0.5);
+        }
+
+        .pack-card h2 { font-size: 1rem; color: var(--primary); margin-bottom: 15px; }
+        .pack-card p { font-size: 0.9rem; color: #ddd; margin-bottom: 25px; line-height: 1.7; }
+
+        .btn-download {
+            background: #5aa35a;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            padding: 12px;
+            font-size: 0.8rem;
+            border: 4px solid #000;
+            box-shadow: inset -4px -4px 0px #2d522d, inset 4px 4px 0px #8ed48e;
+        }
+        .btn-download:hover { background: #6bc26b; }
+        .btn-download:active { box-shadow: inset 4px 4px 0px #2d522d; transform: translateY(2px); }
+
+        /* ===== FOOTER ===== */
+        footer { 
+            background: #1a1a1a; 
+            border-top: 8px solid var(--mc-dirt); 
+            padding: 40px 8%; 
+            text-align: center;
+            font-size: 0.8rem;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="index.html" class="logo">
+        <img src="icon1.png" alt="Mushroom Valley" style="width: 32px;">
+        Mushroom Valley
+    </a>
+    <a href="index.html" class="back-link">← BACK TO HOME</a>
+</header>
+
+<section class="hero">
+    <div class="icon-box">
+        <img src="https://img.icons8.com/?size=100&id=rllUtwzL8BNG&format=png&color=000000" alt="Resource Icon">
+    </div>
+    <h1>Resource Packs</h1>
+    <p>Enhance your visual experience with our curated selection of textures and UI improvements.</p>
+</section>
+
+<main class="container">
+    <div class="packs-grid">
+        
+        <div class="pack-card">
+            <div>
+                <h2>Fresh Animations</h2>
+                <p>Gives all mobs dynamic, smooth movements. Makes the world feel alive and expressive.</p>
+            </div>
+            <a href="https://modrinth.com/resourcepack/fresh-animations" target="_blank" class="btn-download">Download Pack</a>
+        </div>
+
+        <div class="pack-card">
+            <div>
+                <h2>Stay True</h2>
+                <p>A visual remaster of the default textures. Adds variety to blocks without losing the vanilla feel.</p>
+            </div>
+            <a href="https://modrinth.com/resourcepack/stay-true" target="_blank" class="btn-download">Download Pack</a>
+        </div>
+
+        <div class="pack-card">
+            <div>
+                <h2>Glowing Glints</h2>
+                <p>Adds custom glowing effects to enchanted items and armor for better visual feedback.</p>
+            </div>
+            <a href="https://modrinth.com/resourcepack/glowing-glints" target="_blank" class="btn-download">Download Pack</a>
+        </div>
+
+        <div class="pack-card">
+            <div>
+                <h2>Low Fire</h2>
+                <p>Essential for survival and PvP. Lowers the fire overlay height so you can actually see during combat.</p>
+            </div>
+            <a href="https://modrinth.com/resourcepack/low-fire-pack" target="_blank" class="btn-download">Download Pack</a>
+        </div>
+
+        <div class="pack-card">
+            <div>
+                <h2>Fullbright UB</h2>
+                <p>Maximum visibility in any lighting condition. Perfect for mining and night exploration.</p>
+            </div>
+            <a href="https://modrinth.com/resourcepack/fullbright-ub" target="_blank" class="btn-download">Download Pack</a>
+        </div>
+
+        <div class="pack-card">
+            <div>
+                <h2>Fresh Food</h2>
+                <p>Revamps food items with delicious new textures that look much more appetizing than vanilla.</p>
+            </div>
+            <a href="https://modrinth.com/resourcepack/fresh-food" target="_blank" class="btn-download">Download Pack</a>
+        </div>
+
+    </div>
+</main>
+
+<footer>
+    <p>© 2026 Mushroom Valley | Most packs require OptiFine or Continuity for full features.</p>
+</footer>
+
+</body>
+</html>
